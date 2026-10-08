@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Retro Forge — Screen Machine Translator</title>
+
+    <meta
+        name="description"
+        content="Retro Forge develops practical Android applications. Learn about Screen Machine Translator, its features, privacy, and support."
+    >
+
+    <meta name="theme-color" content="#0f172a">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background: #f8fafc;
+            color: #0f172a;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1100px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        nav {
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.4px;
+        }
+
+        .brand-icon {
+            width: 38px;
+            height: 38px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 10px;
+
+            background: #0f172a;
+            color: white;
+
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+
+            color: #475569;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #0f172a;
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 100px 0 90px;
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(59, 130, 246, 0.12),
+                    transparent 35%
+                ),
+                #ffffff;
+        }
+
+        .hero-content {
+            max-width: 820px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+
+            padding: 7px 12px;
+            margin-bottom: 22px;
+
+            border-radius: 999px;
+
+            background: #eff6ff;
+            color: #1d4ed8;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 72px);
+            line-height: 1.05;
+            letter-spacing: -3px;
+
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero p {
+            max-width: 700px;
+
+            color: #475569;
+            font-size: 19px;
+            line-height: 1.7;
+
+            margin-bottom: 32px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 13px 20px;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition: 0.2s ease;
+        }
+
+        .button-primary {
+            background: #0f172a;
+            color: white;
+        }
+
+        .button-primary:hover {
+            transform: translateY(-2px);
+            background: #1e293b;
+        }
+
+        .button-secondary {
+            background: white;
+            color: #0f172a;
+
+            border: 1px solid #cbd5e1;
+        }
+
+        .button-secondary:hover {
+            background: #f8fafc;
+        }
+
+        /* SECTION */
+
+        section {
+            padding: 90px 0;
+        }
+
+        .section-header {
+            max-width: 700px;
+            margin-bottom: 45px;
+        }
+
+        .section-label {
+            color: #2563eb;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(30px, 5vw, 44px);
+            line-height: 1.15;
+
+            letter-spacing: -1.5px;
+
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: #64748b;
+            font-size: 17px;
+        }
+
+        /* PRODUCT */
+
+        .product {
+            background: #f8fafc;
+        }
+
+        .product-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 50px;
+
+            padding: 45px;
+
+            background: white;
+
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+
+            box-shadow:
+                0 10px 30px rgba(15, 23, 42, 0.05);
+        }
+
+        .product-info h3 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .product-info p {
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .product-badge {
+            display: inline-block;
+
+            padding: 6px 10px;
+
+            margin-bottom: 16px;
+
+            border-radius: 7px;
+
+            background: #eff6ff;
+            color: #1d4ed8;
+
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .features {
+            display: grid;
+            gap: 15px;
+        }
+
+        .feature {
+            display: flex;
+            gap: 12px;
+        }
+
+        .feature-icon {
+            flex-shrink: 0;
+
+            width: 28px;
+            height: 28px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 7px;
+
+            background: #eff6ff;
+            color: #2563eb;
+
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .feature strong {
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .feature span {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* PRIVACY */
+
+        .privacy {
+            background: white;
+        }
+
+        .privacy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .info-card {
+            padding: 28px;
+
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+
+            background: #ffffff;
+        }
+
+        .info-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: #f8fafc;
+        }
+
+        .about-content {
+            max-width: 760px;
+        }
+
+        .about-content p {
+            color: #475569;
+            font-size: 17px;
+            margin-bottom: 18px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            background: #0f172a;
+            color: white;
+        }
+
+        .contact .section-label {
+            color: #93c5fd;
+        }
+
+        .contact .section-header p {
+            color: #cbd5e1;
+        }
+
+        .contact-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+
+            padding: 30px;
+
+            border: 1px solid #334155;
+            border-radius: 15px;
+        }
+
+        .contact-box strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-box span {
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .email {
+            color: #93c5fd;
+            font-weight: 700;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 28px 0;
+
+            background: #020617;
+            color: #94a3b8;
+
+            font-size: 13px;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .product-card {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+
+            .privacy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-box {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 560px) {
+
+            .container {
+                width: min(100% - 28px, 1100px);
+            }
+
+            nav {
+                height: 62px;
+            }
+
+            .nav-links a:nth-child(1) {
+                display: none;
+            }
+
+            .hero {
+                padding: 70px 0;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+
+            .product-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+
+            <a href="#home" class="brand">
+                <span class="brand-icon">RF</span>
+                <span>Retro Forge</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#product">Application</a>
+                <a href="#privacy">Privacy</a>
+                <a href="#contact">Support</a>
+            </div>
+
+        </nav>
+    </div>
+</header>
+
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+        <div class="container">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    Independent Android Developer
+                </div>
+
+                <h1>
+                    Building useful software with
+                    <span>simple experiences.</span>
+                </h1>
+
+                <p>
+                    Retro Forge develops practical Android applications
+                    designed to make everyday tasks easier, faster, and
+                    more accessible.
+                </p>
+
+                <div class="buttons">
+
+                    <a href="#product" class="button button-primary">
+                        Explore Screen Machine Translator
+                    </a>
+
+                    <a href="privacy.html" class="button button-secondary">
+                        View Privacy Policy
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- APPLICATION -->
+
+    <section class="product" id="product">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-label">
+                    Our Application
+                </div>
+
+                <h2>
+                    Screen Machine Translator
+                </h2>
+
+                <p>
+                    A convenient Android application for recognizing and
+                    translating text displayed on your screen.
+                </p>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <div class="product-info">
+
+                    <span class="product-badge">
+                        ANDROID APPLICATION
+                    </span>
+
+                    <h3>ScreenMtl</h3>
+
+                    <p>
+                        Screen Machine Translator helps users translate
+                        text displayed on their Android device without
+                        manually copying the text into another application.
+                    </p>
+
+                    <p>
+                        It is designed for use with applications such as
+                        games, chats, videos, documents, and other content
+                        where text may appear on the screen.
+                    </p>
+
+                </div>
+
+
+                <div class="features">
+
+                    <div class="feature">
+
+                        <div class="feature-icon">✓</div>
+
+                        <div>
+                            <strong>On-screen translation</strong>
+                            <span>
+                                Translate text displayed on your Android screen.
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">✓</div>
+
+                        <div>
+                            <strong>Text recognition</strong>
+                            <span>
+                                Recognize text from supported screen content.
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">✓</div>
+
+                        <div>
+                            <strong>Convenient controls</strong>
+                            <span>
+                                Access translation functionality while using
+                                other applications.
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">✓</div>
+
+                        <div>
+                            <strong>Privacy focused</strong>
+                            <span>
+                                Screen content is intended to be processed
+                                locally for translation functionality.
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRIVACY -->
+
+    <section class="privacy" id="privacy">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-label">
+                    Privacy
+                </div>
+
+                <h2>
+                    Your privacy matters.
+                </h2>
+
+                <p>
+                    Screen Machine Translator is designed to minimize
+                    unnecessary collection of user information.
+                </p>
+
+            </div>
+
+
+            <div class="privacy-grid">
+
+                <div class="info-card">
+
+                    <h3>Screen Content</h3>
+
+                    <p>
+                        Screen content accessed for translation is intended
+                        to be processed on the user's device and is not
+                        intentionally uploaded to Retro Forge servers.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <h3>Third-Party Services</h3>
+
+                    <p>
+                        The application may use services such as Google
+                        ML Kit and Google AdMob. These services may process
+                        information according to their respective policies.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <h3>User Control</h3>
+
+                    <p>
+                        Android permissions are controlled by the user and
+                        can be reviewed or revoked through Android settings.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div style="margin-top: 30px;">
+
+                <a href="privacy.html"
+                   class="button button-primary">
+                    Read Full Privacy Policy
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-label">
+                    About Retro Forge
+                </div>
+
+                <h2>
+                    Independent software development.
+                </h2>
+
+            </div>
+
+
+            <div class="about-content">
+
+                <p>
+                    Retro Forge is an independent software developer
+                    focused on building practical applications with
+                    straightforward interfaces and useful functionality.
+                </p>
+
+                <p>
+                    Our goal is to create software that solves everyday
+                    problems while keeping the user experience simple
+                    and accessible.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="contact">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-label">
+                    Support
+                </div>
+
+                <h2>
+                    Need help?
+                </h2>
+
+                <p>
+                    For questions, feedback, or support regarding
+                    Screen Machine Translator, contact Retro Forge.
+                </p>
+
+            </div>
+
+
+            <div class="contact-box">
+
+                <div>
+
+                    <strong>
+                        Retro Forge Support
+                    </strong>
+
+                    <span>
+                        Screen Machine Translator
+                    </span>
+
+                </div>
+
+
+                <a
+                    class="email"
+                    href="mailto:retroforgedev@gmail.com"
+                >
+                    retroforgedev@gmail.com
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-content">
+
+            <div>
+                © <span id="year"></span> Retro Forge. All rights reserved.
+            </div>
+
+            <div class="footer-links">
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="mailto:retroforgedev@gmail.com">
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+    // Automatically display the current year
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+</script>
+
+</body>
+</html>
